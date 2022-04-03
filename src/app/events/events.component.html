@@ -1,0 +1,97 @@
+<h3>This is the page of Events</h3>
+<button class="btn-primary" (click)="onShowAllEvents()">Show All Events</button>
+<&nbsp;>
+<button class="btn-primary" (click)="onShowUpcomingEvents()">Show Upcoming Events</button>
+<&nbsp;>
+<button class="btn-primary" (click)="onAddEvent()">Add Event</button>
+<!--p *ngFor="let ev of listOfEvents">{{ ev }}</p-->
+<hr>
+<table *ngIf="WeatherEntries1 && WeatherEntries1.length > 0">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000000;">number</th>
+      <th style="border: 1px solid #000000;">date</th>
+      <th style="border: 1px solid #000000;">temperatureC</th>
+      <th style="border: 1px solid #000000;">temperatureF</th>
+      <th style="border: 1px solid #000000;">summary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let weat of WeatherEntries1; let i = index">
+      <td style="border: 1px solid #000000;">{{i+1}}</td>
+      <td style="border: 1px solid #000000;">{{weat.date}}</td>
+      <td style="border: 1px solid #000000;">{{weat.temperatureC}}</td>
+      <td style="border: 1px solid #000000;"></td>
+      <td style="border: 1px solid #000000;">{{weat.summary}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<table *ngIf="listOfEvents && listOfEvents.length > 0">
+  <thead>
+  <tr>
+    <th style="border: 1px solid #000000;">number</th>
+    <th style="border: 1px solid #000000;">name</th>
+    <th style="border: 1px solid #000000;">note</th>
+    <th style="border: 1px solid #000000;">address</th>
+    <th style="border: 1px solid #000000;">address2</th>
+    <th style="border: 1px solid #000000;">description</th>
+    <th style="border: 1px solid #000000;">start date</th>
+    <th style="border: 1px solid #000000;">end date</th>
+    <th style="border: 1px solid #000000;">location</th>
+    <th style="border: 1px solid #000000;">phone</th>
+    <th style="border: 1px solid #000000;">email</th>
+    <th style="border: 1px solid #000000;">share link</th>
+    <th style="border: 1px solid #000000;">organizer</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let weat of listOfEvents; let i = index">
+    <td style="border: 1px solid #000000;">{{i+1}}</td>
+    <td style="border: 1px solid #000000;">{{weat.name}}</td>
+    <td style="border: 1px solid #000000;">{{weat.note}}</td>
+    <td style="border: 1px solid #000000;">{{weat.address}}</td>
+    <td style="border: 1px solid #000000;">{{weat.address2}}</td>
+    <td style="border: 1px solid #000000;">{{weat.description}}</td>
+    <td style="border: 1px solid #000000;">{{weat.startDate}}</td>
+    <td style="border: 1px solid #000000;">{{weat.endDate}}</td>
+    <td style="border: 1px solid #000000;">{{weat.location}}</td>
+    <td style="border: 1px solid #000000;">{{weat.phone}}</td>
+    <td style="border: 1px solid #000000;">{{weat.email}}</td>
+    <td style="border: 1px solid #000000;">{{weat.shareLink}}</td>
+    <td style="border: 1px solid #000000;">{{weat.organizer}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<div *ngIf="newEventWanted">
+  <h3>All fields are mandatory, unless otherwise stated!</h3>
+  <hr>
+  <label>Name</label>
+  <input type="text" class="form-control" [(ngModel)]="eventName">
+  <label>Note</label>
+  <input type="text" class="form-control" [(ngModel)]="eventNote">
+  <label>Address1</label>
+  <input type="text" class="form-control" [(ngModel)]="eventAddress1">
+  <label>Address2(optional)</label>
+  <input type="text" class="form-control" [(ngModel)]="eventAddress2">
+  <label>Description</label>
+  <input type="text" class="form-control" [(ngModel)]="eventDescription">
+  <label>Start Date</label>
+  <input type="datetime-local" class="form-control" [(ngModel)]="eventStartDate">
+  <label>End Date</label>
+  <input type="datetime-local" class="form-control" [(ngModel)]="eventEndDate">
+  <label>Location</label>
+  <input type="text" class="form-control" [(ngModel)]="eventLocation">
+  <label>Phone</label>
+  <input type="text" class="form-control" [(ngModel)]="eventPhone">
+  <label>Email</label>
+  <input type="text" class="form-control" [(ngModel)]="eventEmail">
+  <label>Share Link</label>
+  <input type="text" class="form-control" [(ngModel)]="eventShareLink">
+  <label>Organizer</label>
+  <input type="text" class="form-control" [(ngModel)]="eventOrganizer">
+  <hr>
+  <!--p *ngIf="eventName.length>0 && eventNote.length>0">{{allowNewEvent}}=true</p-->
+  <button class="btn btn-primary" [disabled]="allowNewEvent" (click)="onSubmitNewEvent()">Submit</button>
+</div>
