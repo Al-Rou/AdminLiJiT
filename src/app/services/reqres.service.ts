@@ -10,13 +10,15 @@ import {JwtService} from "./jwt.service";
 })
 
 export class ReqresService{
-  //private url = 'http://localhost:37432/weatherforecast';
+  //private urlWeather = 'http://localhost:37432/weatherforecast';
   private urlWeather = 'https://lijitapi.azurewebsites.net/weatherforecast';
   private urlUpcomingEvents = 'https://lijitapi.azurewebsites.net/Events/Upcoming';
+  //private urlUpcomingEvents = 'http://localhost:37432/Events/Upcoming';
   private urlToCreateNewEvent = 'https:';
   //The token is
   // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6IkxpSmlUIiwibmJmIjoxNjQ4OTUxMTE3LCJleHAiOjE2NDg5NjkxMTcsImlhdCI6MTY0ODk1MTExN30.RJLno05oGs0v3mLpE_Pcn4wjk6DtUiwSwKwahlDu60U
-  tokenValue = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6IkxpSmlUIiwibmJmIjoxNjQ4OTUxMTE3LCJleHAiOjE2NDg5NjkxMTcsImlhdCI6MTY0ODk1MTExN30.RJLno05oGs0v3mLpE_Pcn4wjk6DtUiwSwKwahlDu60U';
+  // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6IkxpSmlUIiwibmJmIjoxNjQ5MDAzMzMyLCJleHAiOjE2NDkwMjEzMzIsImlhdCI6MTY0OTAwMzMzMn0.W5mKWup5mQiO5V2bczOvyZlYC2TlRpDjoLJL8kc0fV4
+  tokenValue = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6IkxpSmlUIiwibmJmIjoxNjQ5MDAzMzMyLCJleHAiOjE2NDkwMjEzMzIsImlhdCI6MTY0OTAwMzMzMn0.W5mKWup5mQiO5V2bczOvyZlYC2TlRpDjoLJL8kc0fV4';
 
   constructor(private http: HttpClient) {
 
@@ -28,6 +30,7 @@ export class ReqresService{
     const requestOptions = {
       headers: new HttpHeaders(headerDict)
     };
+    alert('ReqresService is called');
     return this.http.get<Weather[]>(this.urlWeather, requestOptions);
   }
 

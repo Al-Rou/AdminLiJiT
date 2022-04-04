@@ -37,6 +37,7 @@ export class EventsComponent{
   }
   async getWeather(){
       (await this.reqresService.getWeather()).subscribe((res) => {
+        alert('Results are here');
         for(let j = 0; j < res.length; j++) {
           this.firstEntry = {
             date: (res[j] as any).date,
@@ -77,6 +78,7 @@ export class EventsComponent{
   onShowAllEvents(){
     this.newEventWanted = false;
     this.listOfEvents = [];
+    alert('Button is clicked');
     this.getWeather();
   }
   onShowUpcomingEvents(){
